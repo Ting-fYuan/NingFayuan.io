@@ -1,0 +1,66 @@
+@import"normalize.scss";
+
+header {
+    display: flex;
+    background: linear-gradient(to bottom, #f4f5f9 60%, #e2e2e2);
+    .logo {
+      height: 70px;
+      margin: 0 50px 0 60px;
+    }
+  }
+  img {
+    display: block;
+    height: 100%;
+  }
+  nav {
+    ul {
+      display: flex;
+      height: 70px;
+      li {
+        border: 0px solid #000;
+        border-right-width: 1px;
+        border-image: linear-gradient(#fff,rgba(0,0,0,0.2)) 1;
+        position: relative;
+        a {
+          height: 70px;
+          line-height: 70px;
+          display: block;
+          width: 150px;
+          text-align: center;
+          color: #000;
+        }
+        &:hover {
+          .drowmenu {
+            display: block;
+          }
+        }
+      }
+    }
+    & > ul {
+      & > li {
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+  }
+  .drowmenu {
+    position: absolute;
+    display: none;
+    ul {
+      display: flex;
+      flex-direction: column;
+      li {
+        border: none;
+        background: linear-gradient(to bottom, #f4f5f9 60%, #e2e2e2);
+      }
+    }
+  }
+  ul {
+    li {
+      &:hover {
+        background: rgb(219, 219, 219);
+      }
+    }
+  }
+  

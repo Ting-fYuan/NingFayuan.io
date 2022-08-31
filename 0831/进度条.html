@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one{
+            width: 150px;
+            height: 20px;
+            background-color: gray;
+            border: 1px solid #000;
+        }
+        
+        @keyframes one {
+            from{
+                width: 0;
+            }
+            
+            to{
+                width: 150px;
+                background-color: #000;
+            }
+        }
+        .inBoxone{
+            height: 20px;
+            animation: one 5s ease  infinite;
+        }
+
+        .two{
+            margin-top: 20px;
+            width: 150px;
+            height: 20px;
+            background-color: #fff;
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+        @keyframes two {
+            from{
+                width: 0;
+            }
+            to{
+                width: 150px;
+                background:linear-gradient(to right,rgb(220,96,117) , skyblue );
+            }
+        }
+        .inBoxtwo{
+            height: 20px;
+            border-radius: 10px;
+            animation: two 5s ease infinite;
+        }
+
+        .three{
+            margin-top: 20px;
+            width: 150px;
+            height: 20px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            background: 
+            repeating-linear-gradient(135deg,#ddd 0 10px,#eee 0 20px);
+        }
+        @keyframes three {
+            from{
+                width: 0;
+            }
+            to{
+                width: 150px;
+                background: 
+                repeating-linear-gradient(135deg,#f03355 0 10px,#ffa516  0 20px);
+            }
+        }
+        .inBoxthree{
+            height: 20px;
+            border-radius: 10px;
+            animation: three 5s linear infinite;
+        }
+
+        .four{
+            margin-top: 20px;
+            width: 150px;
+            height: 20px;
+            
+            background: linear-gradient(90deg,#000 60%,#0000 0) 0/20%;
+        }
+        @keyframes four {
+            from{
+                width: 0;
+            }
+            to{
+                width: 150px;
+                background:linear-gradient(#000 0 0) 0/0% no-repeat #ddd;
+            }
+        }
+        .inBoxfour{
+            height: 20px;
+            animation: four 5s steps(12) infinite;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="one">
+        <div class="inBoxone"></div>
+    </div>
+    <div class="two">
+        <div class="inBoxtwo"></div>
+    </div>
+    <div class="three">
+        <div class="inBoxthree"></div>
+    </div>
+    <div class="four">
+        <div class="inBoxfour"></div>
+    </div>
+</body>
+</html>

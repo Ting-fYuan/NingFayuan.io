@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      //1.JS是什么
+          //JS是网络脚本语言，用于web应用开发。
+
+      //2.JS的数据类型有哪几种，哪些是简单类型变量，哪些是复杂类型变量，它们有什么区别
+     /*  简单数据类型[String,Number,Boolean,null,undefined,Symbol]
+         复杂数据类型[Object,Function,Array]
+         区别：
+              1、简单数据类型在存储变量是值的本身，复杂数据类型在存储变量是存储的是引用地址。
+              2、简单数据类型存放在栈中，复杂数据类型存放在堆中。
+      */
+
+      //3.用代码来表示具体如何定义JS的各种类型变量
+         //字符串string var str = '今天天气针不戳';
+         //数字number var num = 123;
+         //布尔值boolean var bol = true;
+         //空值null var nu = null;
+         //undefined var und = undefined;
+         //symbol var sym = Symbol();
+         //object var ob =new Object();
+         //function var fn = new Function();
+         //array var arr = new Array();
+
+      //4.undefined和Null的区别
+          /* 
+            undefined数据类型为undefined，
+            Null数据类型为object 
+          */
+
+      //5.script标签写在页面头部和底部，有何区别
+      /*
+      js代码在载入完成后就会立即执行，如果把script标签写在页面头部，js代码执行是会阻塞页面渲染，
+      如果遇到js代码错误，会导致整个html结构无法被渲染。
+      */
+
+      //6.如何保证在页面基本结构和样式加载后，再执行我们的JS脚本
+        // 添加 window.onload=function(){}，把js代码写在里面。
+      
+      //7.如何判断一个变量是属于哪种变量类型（字符串、数值、布尔值、Null、undefined、对象、数组、函数）
+        //使用type of方法来判断字符串、数值、布尔值、undefined、Null属于哪种变量类型。
+        //使用 instanceof方法来判断对象、函数、数组属于哪种变量类型。
+      
+      //8.JS的注释写法有哪几种，有何区别  
+         // 单行注释 //
+         // 多行注释 /**/
+      
+      //9.javascript引入页面有几种形式
+         // 行内导入
+         // 内联式
+         // 外联式
+
+      //10.var 的意义何在
+         //使用var来声明变量
+      
+         //11.已知数A与B，由键盘输入AB的值，交换它们的值，并输出。
+      //提示，获取用户输入信息，可以使用 var user_input = prompt("请输入数字");
+      var A =prompt('输入A的值','');
+      var B =prompt('输入B的值','');
+      var tmp =A;
+      A = B;
+      B = tmp;
+      console.log("A:" + A + ",B:" + B);
+    </script>
+  </body>
+</html>
+

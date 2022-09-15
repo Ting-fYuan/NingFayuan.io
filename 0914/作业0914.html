@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1、 3 + 2 +“7”的结果是什么？3 + (2 + "7")的结果又是什么？这两个表达式输出的值是什么类型？
+           // '57'(string);   327(string)
+        
+        // 2、6 - false的结果是什么？
+           // 6
+        
+        // 3、6 - "false"和6 + "false"的结果分别是什么？结果输出值是什么数据类型？
+           // NaN(number);  6false(string)
+        
+        // 4、请分析console.log(1 + - + + + - + 1)的结果？
+            // 1 - - 1  2
+        
+        // 5、下面代码分别输出什么？前自增(自减)与后自增(自减)的区别？
+        // let a = 1;
+        // let b = ++a + ++a;
+        // console.log(b); 5
+
+        // let a = 1;
+        // let b = a++ + a++;
+        // console.log(b); 3
+
+            //前自增（减）：返回加（减）一后的值；后自增（减）：返回原来的值
+
+        // 6、分析下面代码，请问 j 和 y 分别是多少？(不要运行代码，自己分析后写出答案)
+        // var i = 100;
+        // i++;
+        // j = i++; //101
+        // y = ++j //102
+
+
+        // 7、JS中哪些值通过Boolean对象转换出来的值为`false`?
+            //0、空字符串、null、undefined、NaN、false
+
+        // 8、分析下面代码的结果并解释原因。
+        // let a = 1;
+        // let b = 2;
+
+        // console.log(a && b); //2
+        // console.log(a || b); //1
+           // &&运算是一个找假过程，当所有结果都为真时才会返回真，所以返回的是b；
+           // ||运算是一个找真过程，当有一个条件为真时就返回真，所以返回的是a。
+        
+        // 9、以下代码输出的结果分别是什么？
+        // let a = true && "" && 12306;
+        // let b = false || "" || undefined || "bluej" || 12306;
+
+        // console.log(a); // ""
+        // console.log(b); // 12306
+
+        // 10、分析下面代码，分别输出什么？(以注释形式写在console.log后面)
+        // let str = "12306";
+        // let str1 = 1;
+        // let num = 12306;
+        // let boo = true;
+
+        // console.log(str == num); //true
+        // console.log(str === num); //false   
+        // console.log(str1 == boo);//true
+        // console.log(str1 === boo);//false
+
+
+        // 提高题，非必做
+
+        // - 写出执行结果,并解释原因
+
+        var company = {
+            address: 'beijing'
+        }
+        var yideng = Object.create(company);
+        delete yideng.address
+        console.log(yideng.address);
+
+        // - 写出执行结果,并解释原因
+
+        var x = 1;
+        if (function f() { }) {
+            x += typeof f;
+        }
+        console.log(x)
+    </script>
+</body>
+
+</html>

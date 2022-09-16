@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // 1.定义函数有几种方式
+      //两种，声明式函数，匿名函数
+
+      // 2.retrun关键字的意义
+        //return用于返回结果值，并且中断函数的执行
+
+      // 3.var和function关键字有什么特别功能？
+       // var声明在代码执行前创建变量并初始化；function声明在代码执行前就创建、初始化并赋值
+
+      // 4.请定义一个函数，该函数功能为，传入一个值，返回这个值的平方值
+
+      /* var num=Number(prompt('请输入一个数'))
+      function square(num) {
+        return num * num;
+      }
+      alert('你输入的数的平方是'+square(num)); */
+
+      // 5.请写出一个函数，功能为：传入三个值，则返回这三个值最大的那个值
+      var a = Number(prompt("请输入a"));
+      var b = Number(prompt("请输入b"));
+      var c = Number(prompt("请输入c"));
+      function fn(a, b, c) {
+        // if (a > b && a > c) {
+        //   return a;
+        // } else if (b > a && b > c) {
+        //   return b;
+        // } else {
+        //   return c;
+        // }
+        return Math.max(a,b,c);
+      }
+
+      alert(fn(a, b, c) + "是最大的值");
+
+      // 6.请定义一个函数，输入一个N值，则计算出该值的阶乘，即：n! = 1*2*3*4*5*6*...*N
+
+     /*  var num=Number(prompt('请输入一个数'))
+        function fn(num){
+            if(num<=1){
+                return 1;
+            }
+            return num*fn(num-1)
+        }
+        alert('你输入的数的阶乘是'+ fn(num)) */
+      
+
+    </script>
+  </body>
+</html>

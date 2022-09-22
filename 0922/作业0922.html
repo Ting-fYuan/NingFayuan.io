@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body{
+        margin: 0;
+        display: inline-block;
+        background-color: rgb(204, 204, 204);
+      }
+
+      div{
+        font-size: 50px;
+        padding-top: 20px; 
+        text-align: center;
+        position:absolute;  
+        left:50%;  
+        top:50%;  
+        margin:-100px 0 0 -150px 
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span id="targetday"></span>
+    </div>
+
+    <script>
+      let targetday = document.querySelector("#targetday");
+
+      setInterval(function () {
+        let nowTime = new Date().getTime();
+        let targetTime = new Date("2022-10-1 00:00:00").getTime();
+
+        let remainTime = targetTime - nowTime;
+
+        //获取天数
+        let days = parseInt((remainTime / (1000 * 60 * 60 * 24)) % 30);
+        //获取小时
+        let hours = parseInt((remainTime / (1000 * 60 * 60)) % 24);
+        //获取分钟
+        let minutes = parseInt((remainTime / (1000 * 60)) % 60);
+        ////获取秒数
+        let seconds = parseInt((remainTime / 1000) % 60);
+
+        //将倒计时写进页面
+        targetday.innerHTML = `距离国庆还剩<br>${days}天${hours}小时${minutes}分${seconds}秒`;
+
+        //获取随机rgb
+        function rgb() {
+          let r = Math.floor(Math.random() * 256);
+          let g = Math.floor(Math.random() * 256);
+          let b = Math.floor(Math.random() * 256);
+          return "rgb(" + r + "," + g + "," + b + ")";
+        }
+        //给字体设置颜色
+        targetday.style.color=rgb()
+     
+      },1);
+    </script>
+  </body>
+</html>

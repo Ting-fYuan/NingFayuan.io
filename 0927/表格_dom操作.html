@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <table border="1">
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>price</th>
+      </tr>
+      <!-- <tr>
+      <td>1</td>
+      <td>iPhone14</td>
+      <td>5999</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>iPhone14 Pro</td>
+      <td>7999</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>iPhone14 Pro Max</td>
+      <td>8999</td>
+    </tr> -->
+    </table>
+
+    <script>
+      // 使用下面数据, 生成一个完整数据的表格
+      let data = [
+        { id: 1, name: "iPhone14", price: 5999 },
+        { id: 2, name: "iPhone14 Pro", price: 7999 },
+        { id: 3, name: "iPhone14 Pro Max", price: 8999 },
+      ];
+
+      let table = document.querySelector("table");
+      data.forEach(function (item) {
+        let tr = document.createElement("tr");
+        for (let k in item) {
+          let td = document.createElement("td");
+          td.innerHTML = item[k];
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+      });
+    </script>
+  </body>
+</html>

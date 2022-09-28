@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    .box {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #000;
+        margin: auto;
+    }
+
+    .box>.head {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .box>.head>li {
+        flex-grow: 1;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: #87ceeb;
+    }
+
+    .main {
+        position: relative;
+    }
+
+    .main>li {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 178px;
+        background-color: #87ceeb;
+    }
+
+    .mainActive {
+        z-index: 999;
+    }
+</style>
+</head>
+<body>
+  <div class="box">
+    <ul class="head">
+        <li class="active">标题一</li>
+        <li>标题二</li>
+        <li>标题三</li>
+    </ul>
+
+    <ul class="main">
+        <li class="mainActive">内容一</li>
+        <li>内容二</li>
+        <li>内容三</li>
+    </ul>
+</div>
+
+
+<script>
+
+//获取按钮和文本
+let head = document.querySelectorAll('.head>li')
+let main = document.querySelectorAll('.main>li')
+
+for(let i=0;i<head.length;i++){
+    head[i].onclick=function(){
+        for(let k=0;k<head.length;k++){
+            //点击按钮的时候清除所有按钮和选项栏的样式
+            head[k].classList.remove('active');
+            main[k].classList.remove('mainActive');
+        }
+        //给点击的按钮和对应的选项栏添加样式
+        head[i].classList.add('active');
+        main[i].classList.add('mainActive');
+    }
+}
+
+
+/* head.forEach(function(item,index){
+    item.onclick=function(){
+        for(let i=0;i<head.length;i++){
+        //点击按钮的时候清除所有按钮和选项栏的样式
+          head[i].classList.remove('active');
+          main[i].classList.remove('mainActive');
+        }
+        //给点击的按钮和对应的选项栏添加样式
+        head[index].classList.add('active');
+        main[index].classList.add('mainActive');
+    }
+}) */
+
+
+
+</script>
+
+
+</body>
+</html>

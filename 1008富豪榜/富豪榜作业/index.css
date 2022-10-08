@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header {
+  background-color: skyblue;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  padding: 40px 20px;
+  color: white;
+}
+
+#toggle {
+  background-color: white;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  border: none;
+  outline: none;
+}
+
+#toggle:hover {
+  background-color: rgba(76, 131, 202, 0.6);
+  border: 1px solid #fff;
+  transform: scale(1.1);
+  color: #fff;
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#login {
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 15px 30px;
+}
+
+button:focus {
+  outline: none;
+  /* 去除点击时候，边框样式 */
+}
+
+nav {
+  background-color: pink;
+  color: white;
+  width: 200px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  /* z-index: 100; */
+  transform: translate(-100%);
+}
+nav > ul > li {
+  line-height: 50px;
+  text-align: center;
+  height: 50px;
+}
+nav > ul > li:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+body {
+  transition: transform 0.5s ease;
+}
+
+.show_nav {
+  /* width: 200px; */
+  transform: translate(200px);
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.container aside {
+  padding: 10px 20px;
+  width: 250px;
+  border-right: 1px solid black;
+}
+
+.container button {
+  cursor: pointer;
+  background-color: white;
+  border-radius: 5px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 20px 0;
+}
+
+.container button:hover {
+  background-color: rgba(76, 131, 202, 0.2);
+  transform: scale(1.1);
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.container main {
+  flex: 1;
+  /* 自动填充复元素剩余的宽度 */
+  padding: 10px 15px;
+}
+
+.container h2 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.container .person {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  font-size: 18px;
+}

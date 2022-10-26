@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="box">
+        <!-- 图片 -->
+        <div class="img_box">
+            <!-- 图片列表 -->
+            <ul>
+                <li><a href="javascript:void(0)"><img src="./img/01.jpeg"></a></li>
+                <li><a href="javascript:void(0)"><img src="./img/02.jpeg"></a></li>
+                <li><a href="javascript:void(0)"><img src="./img/03.jpeg"></a></li>
+                <li><a href="javascript:void(0)"><img src="./img/04.jpeg"></a></li>
+            </ul>
+
+            <!-- 左右箭头 -->
+            <div class="arrow_left">&lt;</div>
+            <div class="arrow_right">&gt;</div>
+        </div>
+
+        <!-- 小圆点 -->
+        <div class="dot_box">
+            <span class="dot dotActive" data-index=1></span>
+            <span class="dot" data-index=2></span>
+            <span class="dot" data-index=3></span>
+            <span class="dot" data-index=4></span>
+        </div>
+    </div>
+
+    <div class="box2">
+        <!-- 图片 -->
+        <div class="img_box">
+            <!-- 图片列表 -->
+            <ul>
+                <li><a href="javascript:void(0)"><img src="./img/01.jpeg"></a></li>
+                <li><a href="javascript:void(0)"><img src="./img/02.jpeg"></a></li>
+                <li><a href="javascript:void(0)"><img src="./img/03.jpeg"></a></li>
+                <li><a href="javascript:void(0)"><img src="./img/04.jpeg"></a></li>
+            </ul>
+
+            <!-- 左右箭头 -->
+            <div class="arrow_left">&lt;</div>
+            <div class="arrow_right">&gt;</div>
+        </div>
+
+        <!-- 小圆点 -->
+        <div class="dot_box">
+            <span class="dot dotActive" data-index=1></span>
+            <span class="dot" data-index=2></span>
+            <span class="dot" data-index=3></span>
+            <span class="dot" data-index=4></span>
+        </div>
+    </div>
+
+
+</body>
+    <script src="./index.js"></script>
+    <script>
+        let swiper1 = new Swiper('.box');
+        //console.log(swiper1);
+        //自动轮播
+        let swiper2 = new Swiper2('.box2');
+
+
+    </script>
+</html>

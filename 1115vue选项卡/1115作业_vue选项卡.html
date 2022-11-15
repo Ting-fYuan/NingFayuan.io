@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue-选项卡</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+      }
+      .contentBox {
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="id">
+      <ol>
+        <li v-for="(item,index) in title" @mouseover="handler(index)">
+          <!-- <span>html</span> -->
+          <span>{{item.item}}</span>
+        </li>
+      </ol>
+      <div class="box">
+        <div
+          class="contentBox"
+          v-for="(item,index) in contents"
+          v-if="index ==number"
+        >
+          <!-- <span>html-contents</span> -->
+          <span>{{item.item}}</span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    new Vue({
+      el: "#id",
+      data: {
+        title: [
+          {
+            item: "html",
+          },
+          {
+            item: "css",
+          },
+          {
+            item: "js",
+          },
+          {
+            item: "vuejs",
+          },
+        ],
+        contents: [
+          {
+            item: "html-contents",
+          },
+          {
+            item: "css-contents",
+          },
+          {
+            item: "js-contents",
+          },
+          {
+            item: "vuejs-contents",
+          },
+        ],
+        number: 0,
+      },
+      methods: {
+        handler(index) {
+          this.number = index;
+        },
+      },
+    });
+  </script>
+</html>

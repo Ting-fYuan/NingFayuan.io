@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .tdContents {
+        max-width: 200px;
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 用户输入评论 -->
+      <textarea
+        cols="30"
+        rows="10"
+        placeholder="请输入评论"
+        :content="input_content"
+        @blur="get_content"
+      ></textarea>
+      <button @click="sub">发布评论</button>
+      <!-- 渲染用户的评论 -->
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <th>游客</th>
+          <th>评论</th>
+          <th>点赞数</th>
+          <th>发布日期</th>
+          <th colspan="3">操作</th>
+        </tr>
+
+        <tr v-for="(item,index) in list">
+          <td><span>{{item.name}}</span></td>
+          <td class="tdContents"><span>{{item.contents}}</span></td>
+          <td><span>{{item.count}}</span></td>
+          <td><span>{{item.time}}</span></td>
+          <td><button @click="item.count++">点赞</button></td>
+          <!-- 置顶 -->
+          <td><button @click="goTop(item,index)">置顶</button></td>
+          <!-- 删除 -->
+          <td><button @click="del(item,index)">删除</button></td>
+        </tr>
+      </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          list: [
+            {
+              id: 1,
+              name: "茄子",
+              contents: "住在山里面,真不错~",
+              count: 999,
+              time: "2021-10-11",
+            },
+            {
+              id: 2,
+              name: "大司马",
+              contents: "芜湖起飞~",
+              count: 0,
+              time: "2021-10-12",
+            },
+            // {
+            //     id:3,
+            //     name:xxx,
+            //     contents:,
+            //     count:0,
+            // }
+          ],
+
+          
+          input_content: "",
+          input_count: 0,
+        },
+        methods: {
+          //获取输入的评论
+          get_content(e) {
+            this.input_content = e.target.value;
+          },
+          //提交评论按钮
+          sub() {
+            if (this.input_content != "") {
+              //获取评论日期
+              let year = new Date().getFullYear();
+              let month = new Date().getMonth() + 1;
+              let day = new Date().getDate();
+              this.list.push({
+                name: "某某某",
+                contents: this.input_content,
+                count: this.input_count,
+                time: `${year}-${month}-${day}`,
+              });
+              this.input_content ="";
+            } else {
+              alert("评论不能为空!!!");
+            }
+          },
+          //置顶按钮
+          goTop(item, index) {
+            this.list.splice(index, 1);
+            this.list.unshift(item);
+          },
+          //删除按钮
+          del(item, index) {
+            if (this.list[index] === item) {
+              this.list.splice(index, 1);
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

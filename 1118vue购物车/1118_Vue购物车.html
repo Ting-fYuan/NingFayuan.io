@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>购物车</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 全选框 -->
+      <label for="allChecked">全选</label>
+      <input
+        type="checkbox"
+        id="allChecked"
+        @change="allChecked"
+        v-model="isAllSelect"
+      />
+      <!-- 购物车列表 -->
+      <ul>
+        <li v-for="(item,index) in dataArr">
+          <input type="checkbox" @change="isChecked" v-model="item.checked" />
+          商品名称: <span>{{item.name}}</span> | 商品单价:
+          <span>{{item.price}}</span> | 数量:
+          <input type="number" min="1" v-model="item.num" /> | 小计:
+          <span>¥ {{item.price * item.num}}</span>
+        </li>
+      </ul>
+
+      <span>总价:¥ {{getTotal}}</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          isAllSelect: false,
+          dataArr: [
+            {
+              id: 1,
+              name: "iPhone14",
+              price: "5999",
+              num: 1,
+              checked: false,
+            },
+            {
+              id: 2,
+              name: "iPhone14 Pro",
+              price: "7999",
+              num: 1,
+              checked: false,
+            },
+            {
+              id: 3,
+              name: "iPhone 14 Pro Max",
+              price: "8999",
+              num: 1,
+              checked: false,
+            },
+          ],
+        },
+        computed: {
+          //计算只被选中元素的总价
+          getTotal() {
+            return this.dataArr
+              .filter((item) => item.checked)
+              .reduce((prev, item) => {
+                return prev + item.price * item.num;
+              }, 0);
+          },
+        },
+        methods: {
+          //全选功能
+          allChecked() {
+            this.dataArr.forEach((item) => {
+              item.checked = this.isAllSelect;
+            });
+          },
+          isChecked() {
+            //当every状态为true时，此时为全选状态
+            this.isAllSelect = this.dataArr.every((item) => item.checked);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

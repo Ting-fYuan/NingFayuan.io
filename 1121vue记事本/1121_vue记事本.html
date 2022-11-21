@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 用户输入内容 -->
+      <input type="text" @keyup.enter="add()" v-model="inputText" />
+
+      <!-- 未完成 -->
+      <h1>未完成事件</h1>
+      <div class="not-finished">
+        <div v-for="(item,index) in notFinishedArr" :key="item.id">
+          <input
+            type="checkbox"
+            @change="toTrue(item,index)"
+            v-model="item.isChecked"
+          />
+          <span>{{item.thing}}</span>
+          <button @click="delNotFinished(item, index)">删除</button>
+        </div>
+      </div>
+
+      <!-- 已经完成 -->
+      <h1>已经完成事件</h1>
+      <div class="finished" v-for="(item,index) in finishedArr" :key="item.id">
+        <div>
+          <input
+            type="checkbox"
+            @change="toFalse(item,index)"
+            v-model="item.isChecked"
+          />
+          <span>{{item.thing}}</span>
+          <button @click="delFinished(item,index)">删除</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          // 未完成的事情
+          notFinishedArr: [
+            {
+              id: 1,
+              thing: "敲代码",
+              isChecked: false,
+            },
+            {
+              id: 2,
+              thing: "整理笔记",
+              isChecked: false,
+            },
+          ],
+          //  已完成的事情
+          finishedArr: [
+            {
+              id: 3,
+              thing: "脑袋放空, 进入提前放假模式",
+              isChecked: true,
+            },
+          ],
+          inputText: "",
+        },
+        methods: {
+          //鼠标失去焦点后添加到未完成事件区域
+          add() {
+            if(this.inputText!=''){
+              this.notFinishedArr.push({
+                id:Date.now(),
+                thing:this.inputText,
+                isChecked: false,
+              });
+              this.inputText='';
+            }else{
+              alert('不能为空')
+            };
+          },
+          //选中未完成元素添加到完成事件区域
+          toTrue(item, index) {
+            if (item.isChecked == true) {
+              this.finishedArr.push(item);
+            }
+            this.notFinishedArr.splice(index, 1);
+          },
+          //取消完成元素添加到未完成事件区域
+          toFalse(item, index) {
+            if (item.isChecked == false) {
+              this.notFinishedArr.push(item);
+            }
+            this.finishedArr.splice(index, 1);
+          },
+          //点击删除按钮
+          delNotFinished(item, index) {
+            if (this.notFinishedArr[index] === item) {
+              this.notFinishedArr.splice(index, 1);
+            }
+          },
+          delFinished(item, index) {
+            if (this.finishedArr[index] === item) {
+              this.finishedArr.splice(index, 1);
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

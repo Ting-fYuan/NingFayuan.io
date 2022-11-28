@@ -10,50 +10,51 @@
   <body>
     <div id="app">
       <!-- 用户输入内容 -->
-      <input type="text" :value="inputValue" @keydown.enter="inputHandle" />
+      <input type="text" @keydown.enter="inputHandle" :value="inputValue" />
 
       <!-- 未完成 -->
       <h1>未完成事件</h1>
-      <common
-        :props-arr="notFinishedArr"
-        @com-event="changeHandle"
-      ></common>
+      <div class="not-finished">
+        <com1 :props-arr="notFinishedArr" @com-event="changeHandle"></com1>
+      </div>
 
       <!-- 已经完成 -->
       <h1>已经完成事件</h1>
-      <common
-        :props-arr="finishedArr"
-        @com-event="changeHandle"
-      ></common>
+      <div class="finished">
+        <com1 :props-arr="finishedArr" @com-event="changeHandle"></com1>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
-      //定义事件盒子组件
-      let common = {
+      let com1 = {
         props: {
-          "props-arr":{
-            type:Array,
-            default:[]
-          }
+          "props-arr": {
+            type: Array,
+            default: [],
+          },
         },
-        created(){
+        created() {
           console.log(this.$props.propsArr);
         },
         template: `
-            <div>
-                <div v-for="item in propsArr" :key="item.id">
-                    <input type="checkbox" v-model="item.isChecked" @change="changeItem(item.id)">
-                    <span>{{item.thing}}</span>
-                    <button @click="propsArr.splice(index,1)">删除</button>
-                </div>
-            </div>
-            `,
+        <div>
+          <div v-for="(item, index) in propsArr" :key="item.id">
+          <input
+            type="checkbox"
+            :checked="item.isChecked"
+            @change="$emit('com-event',item,index)"
+          />
+          <span>{{item.thing}}</span>
+          <button @click="propsArr.splice(index, 1)">删除</button>
+        </div>
+       </div> 
+        `,
       };
-
-      //定义app组件
-      new Vue({
+      let vm = new Vue({
         el: "#app",
         data: {
+          // 初始值(响应值)
+          inputValue: "",
           // 未完成的事情
           notFinishedArr: [
             {
@@ -75,41 +76,40 @@
               isChecked: true,
             },
           ],
-          inputValue: "",
-        },
-        components: {
-          common,
         },
         methods: {
-            // input框输入内容处理函数
-            inputHandle($event) {
-                // 将input的值赋给响应值
-                this.inputValue = $event.target.value;
-                // 添加到未完成事件的数组中
-                this.notFinishedArr.push({
-                    id: Date.now(),
-                    thing: this.inputValue,
-                    isChecked: false
-                });
-                // 清空input值
-                this.inputValue = "";
-            },
-            // 未完成的事件
-            changeHandle(item, index) {
-                item.isChecked = !item.isChecked;
-                // 如果isChecked为true, 就意味着已完成
-                if(item.isChecked) {
-                    // 推进已完成的数组中
-                    this.finishedArr.push(item);
-                    // 删除当前在未完成的数组对应成员
-                    this.notFinishedArr.splice(index, 1);
-                } else {
-                    // 推进未完成的数组中
-                    this.notFinishedArr.push(item);
-                    // 删除当前在已完成的数组对应成员
-                    this.finishedArr.splice(index, 1);
-                }
+          // input框输入内容处理函数
+          inputHandle($event) {
+            // 将input的值赋给响应值
+            this.inputValue = $event.target.value;
+            // 添加到未完成事件的数组中
+            this.notFinishedArr.push({
+              id: Date.now(),
+              thing: this.inputValue,
+              isChecked: false,
+            });
+            // 清空input值
+            this.inputValue = "";
+          },
+          // 未完成的事件
+          changeHandle(item, index) {
+            item.isChecked = !item.isChecked;
+            // 如果isChecked为true, 就意味着已完成
+            if (item.isChecked) {
+              // 推进已完成的数组中
+              this.finishedArr.push(item);
+              // 删除当前在未完成的数组对应成员
+              this.notFinishedArr.splice(index, 1);
+            } else {
+              // 推进未完成的数组中
+              this.notFinishedArr.push(item);
+              // 删除当前在已完成的数组对应成员
+              this.finishedArr.splice(index, 1);
             }
+          },
+        },
+        components: {
+          com1,
         },
       });
     </script>
